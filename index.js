@@ -49,7 +49,21 @@ const maximizePhysicalServers = () => {
     });
   };
 
+  const countServers = () => {
+    const servers = {};
+    const serverCount = 1;
+    for (let i = 1; i < vitrualMachines.length; i++) {
+      if (Object.keys(servers).length === 0) {
+        server[`server${serverCount}`] = {
+          vms: [...vms, vitrualMachines[i]],
+          availableResource: availableResource - vitrualMachines[i]
+        };
+      }
+    }
+  };
+
   getVmResource();
+  countServers();
 };
 
 maximizePhysicalServers();
